@@ -144,8 +144,12 @@ if [ -e /etc/gdm3/daemon.conf ]; then
 elif [ -e /etc/lightdm/lightdm.conf ]; then
     systemctl restart lightdm.service || true
 fi
-    systemctl restart rkaiq_3A.service || true
 
+if [ -e /usr/lib/systemd/system/rkisp_3A.service ]; then
+    systemctl restart rkisp_3A.service || true
+elif [ -e /usr/lib/systemd/system/rkaiq_3A.service ]; then
+    systemctl restart rkaiq_3A.service || true
+fi
     touch /usr/local/first_boot_flag
 fi
 
