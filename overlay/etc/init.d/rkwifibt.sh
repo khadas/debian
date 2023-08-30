@@ -14,31 +14,31 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 init_rkwifibt() {
     case $1 in
         rk3288)
-	    rk_wifibt_init /dev/ttyS0
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3399|rk3399pro)
-	    rk_wifibt_init /dev/ttyS0
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3328)
-	    rk_wifibt_init /dev/ttyS0
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3326|px30)
-	    rk_wifibt_init /dev/ttyS1
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3128|rk3036)
-	    rk_wifibt_init /dev/ttyS0
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3562)
-	    rk_wifibt_init /dev/ttyS1
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3566)
-	    rk_wifibt_init /dev/ttyS1
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3568)
-	    rk_wifibt_init /dev/ttyS8
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
         rk3588|rk3588s)
-	    rk_wifibt_init /dev/ttyS8
+	    rk_wifibt_init /dev/$(bt-tty)
             ;;
     esac
 }
