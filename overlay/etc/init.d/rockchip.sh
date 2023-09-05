@@ -153,9 +153,6 @@ fi
     touch /usr/local/first_boot_flag
 fi
 
-# enable rkwifbt service
-#service rkwifibt start
-
 # enable async service
 #service async start
 
