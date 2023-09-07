@@ -97,6 +97,7 @@ sed -i "s~\(^ExecStart=.*\)~# \1\nExecStart=-/bin/sh -c '/bin/bash -l </dev/%I >
 #---------------power management --------------
 \${APT_INSTALL} pm-utils triggerhappy bsdmainutils
 cp /etc/Powermanager/triggerhappy.service  /lib/systemd/system/triggerhappy.service
+sed -i "s/#HandlePowerKey=.*/HandlePowerKey=ignore/" /etc/systemd/logind.conf
 
 #---------------Rga--------------
 \${APT_INSTALL} /packages/rga2/*.deb
