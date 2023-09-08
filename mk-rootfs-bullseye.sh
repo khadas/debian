@@ -113,7 +113,6 @@ gstreamer1.0-plugins-base-apps qtmultimedia5-examples
 \${APT_INSTALL} /packages/gst-plugins-bad1.0/*.deb
 \${APT_INSTALL} /packages/gst-plugins-good1.0/*.deb
 \${APT_INSTALL} /packages/gst-plugins-ugly1.0/*.deb
-\${APT_INSTALL} /packages/gst-libav1.0/*.deb
 
 #---------Camera---------
 echo -e "\033[36m Install camera.................... \033[0m"
