@@ -9,7 +9,7 @@ IMAGE_SIZE_MB=$(( $(sudo du -sh -m ${TARGET_ROOTFS_DIR} | cut -f1) + ${EXTRA_SIZ
 echo Making rootfs!
 
 if [ -e ${ROOTFSIMAGE} ]; then
-	rm ${ROOTFSIMAGE}
+	sudo rm ${ROOTFSIMAGE}
 fi
 
 for script in ./post-build.sh ../device/rockchip/common/post-build.sh; do
