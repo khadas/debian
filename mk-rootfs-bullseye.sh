@@ -25,12 +25,6 @@ if [ ! -e linaro-bullseye-alip-*.tar.gz ]; then
 	exit -1
 fi
 
-finish() {
-	sudo umount $TARGET_ROOTFS_DIR/dev
-	exit -1
-}
-trap finish ERR
-
 echo -e "\033[36m Extract image \033[0m"
 sudo tar -xpf linaro-bullseye-alip-*.tar.gz
 
@@ -50,23 +44,9 @@ if [ "$VERSION" == "debug" ]; then
 	sudo cp -rpf overlay-debug/* $TARGET_ROOTFS_DIR/
 fi
 
-# bt/wifi firmware
-sudo mkdir -p $TARGET_ROOTFS_DIR/system/lib/modules/
-sudo mkdir -p $TARGET_ROOTFS_DIR/vendor/etc
-
-sudo find ../kernel/drivers/net/wireless/rockchip_wlan/*  -name "*.ko" | \
-    xargs -n1 -i sudo cp {} $TARGET_ROOTFS_DIR/system/lib/modules/
-
 echo -e "\033[36m Change root.....................\033[0m"
-if [ "$ARCH" == "armhf" ]; then
-	sudo cp /usr/bin/qemu-arm-static $TARGET_ROOTFS_DIR/usr/bin/
-elif [ "$ARCH" == "arm64"  ]; then
-	sudo cp /usr/bin/qemu-aarch64-static $TARGET_ROOTFS_DIR/usr/bin/
-fi
 
 sudo cp -f /etc/resolv.conf $TARGET_ROOTFS_DIR/etc/
-
-sudo mount -o bind /dev $TARGET_ROOTFS_DIR/dev
 
 ID=$(stat --format %u $TARGET_ROOTFS_DIR)
 
@@ -85,9 +65,6 @@ echo "deb-src http://mirrors.ustc.edu.cn/debian/ bullseye-backports main contrib
 
 apt-get update
 apt-get upgrade -y
-
-chmod o+x /usr/lib/dbus-1.0/dbus-daemon-launch-helper
-chmod +x /etc/rc.local
 
 export APT_INSTALL="apt-get install -fy --allow-downgrades"
 
@@ -253,5 +230,3 @@ rm -rf /var/cache/
 rm -rf /packages/
 
 EOF
-
-sudo umount $TARGET_ROOTFS_DIR/dev
