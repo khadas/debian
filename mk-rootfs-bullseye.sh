@@ -153,8 +153,8 @@ echo -e "\033[36m Install rktoolkit.................... \033[0m"
 \${APT_INSTALL} /packages/rktoolkit/*.deb
 
 #------------------gl4es------------
-echo -e "\033[36m Install gl4es.................... \033[0m"
-\${APT_INSTALL} /packages/gl4es/*.deb
+# echo -e "\033[36m Install gl4es.................... \033[0m"
+# \${APT_INSTALL} /packages/gl4es/*.deb
 
 echo -e "\033[36m Install Chinese fonts.................... \033[0m"
 # Uncomment zh_CN.UTF-8 for inclusion in generation
