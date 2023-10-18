@@ -164,13 +164,6 @@ echo "LANG=zh_CN.UTF-8" >> /etc/default/locale
 # Generate locale
 locale-gen
 
-# Export env vars
-echo "export LC_ALL=zh_CN.UTF-8" >> ~/.bashrc
-echo "export LANG=zh_CN.UTF-8" >> ~/.bashrc
-echo "export LANGUAGE=zh_CN.UTF-8" >> ~/.bashrc
-
-source ~/.bashrc
-
 \${APT_INSTALL} ttf-wqy-zenhei fonts-aenigma
 \${APT_INSTALL} xfonts-intl-chinese
 
