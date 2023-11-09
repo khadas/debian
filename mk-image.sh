@@ -2,8 +2,6 @@
 
 TARGET_ROOTFS_DIR=./binary
 ROOTFSIMAGE=linaro-rootfs.img
-EXTRA_SIZE_MB=300
-IMAGE_SIZE_MB=$(( $(sudo du -sh -m ${TARGET_ROOTFS_DIR} | cut -f1) + ${EXTRA_SIZE_MB} ))
 
 
 echo Making rootfs!
@@ -17,6 +15,8 @@ for script in ./post-build.sh ../device/rockchip/common/post-build.sh; do
 	sudo $script "$(realpath "$TARGET_ROOTFS_DIR")"
 done
 
+EXTRA_SIZE_MB=300
+IMAGE_SIZE_MB=$(( $(sudo du -sh -m ${TARGET_ROOTFS_DIR} | cut -f1) + ${EXTRA_SIZE_MB} ))
 sudo mkfs.ext4 -d ${TARGET_ROOTFS_DIR} ${ROOTFSIMAGE} ${IMAGE_SIZE_MB}M
 
 echo Rootfs Image: ${ROOTFSIMAGE}
