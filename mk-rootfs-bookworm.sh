@@ -162,7 +162,9 @@ echo -e "\033[36m Install rktoolkit.................... \033[0m"
 echo -e "\033[36m Install Chinese fonts.................... \033[0m"
 # Uncomment zh_CN.UTF-8 for inclusion in generation
 sed -i 's/^# *\(zh_CN.UTF-8\)/\1/' /etc/locale.gen
-echo "LANG=zh_CN.UTF-8" >> /etc/default/locale
+sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen
+#echo "LANG=zh_CN.UTF-8" >> /etc/default/locale
+echo "LANG=en_US.UTF-8" >> /etc/default/locale
 
 # Generate locale
 locale-gen
