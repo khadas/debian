@@ -205,3 +205,4 @@ zip
 #desktop-base
 systemd-sysv
 zathura
+zenity

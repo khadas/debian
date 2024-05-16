@@ -108,9 +108,20 @@ function add_build_info()
         "$OS_RELEASE"
 }
 
+function fixup_network()
+{
+	RESOLV=${TARGET_DIR}/etc/resolv.conf
+
+	if [ -e ${RESOLV} ]; then
+		echo "Set nameserver to 8.8.8.8 ..."
+		sed -i 's/^nameserver.*/nameserver 8.8.8.8/' $RESOLV
+	fi
+}
+
 echo "Executing $(basename $0)..."
 
 add_build_info $@
 [ -f "$FSTAB" ] && fixup_fstab
+fixup_network
 
 exit 0
