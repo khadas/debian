@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "I: create khadas user"
+adduser --gecos khadas --disabled-password khadas
+
+echo "I: set khadas user password"
+echo "khadas:khadas" | chpasswd
