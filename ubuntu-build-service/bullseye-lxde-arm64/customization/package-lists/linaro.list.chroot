@@ -161,6 +161,8 @@ rsyslog
 sox
 ssh-import-id
 strace
+stress
+stress-ng
 sudo
 #supertuxkar
 synaptic
