@@ -132,20 +132,13 @@ if [ ! -e "/usr/local/first_boot_flag" ]; then
 
     rm -rf /*.deb /*.tar
 
-    # The base target does not come with lightdm/rkaiq_3A
-    if [ -e /etc/gdm3/daemon.conf ]; then
-        systemctl restart gdm3.service || true
-    elif [ -e /etc/lightdm/lightdm.conf ]; then
-        systemctl restart lightdm.service || true
-    fi
-
-    if [ -e /usr/lib/systemd/system/rkisp_3A.service ]; then
-        systemctl restart rkisp_3A.service || true
-    elif [ -e /usr/lib/systemd/system/rkaiq_3A.service ]; then
-        systemctl restart rkaiq_3A.service || true
-    fi
-
     touch /usr/local/first_boot_flag
+
+    # In order to achieve better compatibility, various applications will being
+    # installed during the first system startup. This can result in slow boot times,
+    # slow read/write speeds, and issues such as PipeWire audio being silent.
+    sync
+    shutdown -r now
 fi
 
 # support power management
